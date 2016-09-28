@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class Clase_A {
 	public String p = "p";
-	public ArrayList<String> listaAlumnos = new ArrayList<String>();
+	
 
 	// este metodo es para incluir el Arraylist en el documento de texto.
-	public void escribirFichero() {
+	public void escribirFichero(ArrayList<String> listaAlumnos) {
 
 		String sFichero = "lista.txt";
 		File fichero = new File(sFichero);
