@@ -27,7 +27,7 @@ public class Clase_A {
 			e.printStackTrace();
 		}
 
-		for (int x = 0; x < 10; x++) {
+		for (int x = 0; x < listaAlumnos.size(); x++) {
 
 			try {
 				bw.write(x + "." + listaAlumnos.get(x) + "\n");
