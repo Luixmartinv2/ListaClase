@@ -5,6 +5,7 @@ public class Main {
 		
 		Clase_A A = new Clase_A();
 		//Actividad1_1 B = new Actividad1_1();
+		//Actividad1_2 C = new Actividad1_2();
 	}
 
 }
