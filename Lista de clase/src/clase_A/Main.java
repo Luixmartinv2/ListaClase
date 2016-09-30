@@ -1,11 +1,21 @@
 package clase_A;
 
+import java.util.ArrayList;
+
+
+
 public class Main {
 	public static void main(String[] args) {
 		
-		Clase_A A = new Clase_A();
-		//Actividad1_1 B = new Actividad1_1();
-		//Actividad1_2 C = new Actividad1_2();
+		ArrayList<String> listaEscribe = new ArrayList();
+
+		Clase_A claseA = new Clase_A();
+		Clase_B claseB = new Clase_B();
+
+		listaEscribe = claseB.crearArray();
+		claseA.escribirFichero(listaEscribe);
+		listaEscribe = claseA.leerFichero();
+		claseB.EscribirPanatalla(listaEscribe);
 	}
 
 }

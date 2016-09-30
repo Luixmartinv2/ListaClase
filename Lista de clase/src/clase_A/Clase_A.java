@@ -7,50 +7,60 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Clase_A {
 	public String p = "p";
-	
+	// private ArrayList<String> personas = new ArrayList<String>();
 
 	// este metodo es para incluir el Arraylist en el documento de texto.
-	public void escribirFichero(ArrayList<String> listaAlumnos) {
+	public static void escribirFichero(ArrayList<String> listaAlumnos) {
 
 		String sFichero = "lista.txt";
-		File fichero = new File(sFichero);
 
-		BufferedWriter bw = null;
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+
 		try {
-			bw = new BufferedWriter(new FileWriter(sFichero));
-		} catch (IOException e) {
+			fichero = new FileWriter("Lista2.txt");
 
+			for (int x = 0; x <= listaAlumnos.size() - 1; x++) {
+
+				pw = new PrintWriter(fichero);
+				pw.println(listaAlumnos.get(x));
+			}
+			fichero.close();
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<String> leerFichero() {
+		ArrayList<String> personas = new ArrayList<String>();
+		File archivo = null;
+
+		// Recorre el fichero y añadir elementos a mi arraylist
+
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			archivo = new File("Lista2.txt");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			String Linea;
+			while ((Linea = br.readLine()) != null) {
+				personas.add(Linea);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		for (int x = 0; x < listaAlumnos.size(); x++) {
-
-			try {
-				bw.write(x + "." + listaAlumnos.get(x) + "\n");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-		}
-
-	};
-
-	public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
-		String cadena;
-		FileReader f = new FileReader(archivo);
-		BufferedReader b = new BufferedReader(f);
-		while ((cadena = b.readLine()) != null) {
-			System.out.println(cadena);
-		}
-		b.close();
+		return personas;
 	}
-	
-	 /*public static void main(String[] args) throws IOException {
-	        muestraContenido("lista.txt");
-	    }*/
 
 }
