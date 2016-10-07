@@ -1,6 +1,7 @@
 package clase_A;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Scanner;
@@ -55,24 +56,31 @@ public class Clase_C {
 		return pelis;
 	}
 
-	public void insertarDatos(HashMap<Integer, String> pelis) {
+	@SuppressWarnings("null")
+	public void insertarDatos(ArrayList<String> listaAlumnos) {
+
+		HashMap<Integer, String> pelis = null;
 
 		Integer ID_Alumno;
 
 		String lista_alumnos;
 
 		for (HashMap.Entry<Integer, String> entry : pelis.entrySet()) {
+			for (int i = 0; i < listaAlumnos.size(); i++) {
+			ID_Alumno=(i+1);
+			lista_alumnos=listaAlumnos.get(i);
 			ID_Alumno = entry.getKey();
 			lista_alumnos = entry.getValue();
 
 			String query = "INSERT INTO peliculas (ID_Alumno,lista_alumnos) VALUES ('" + ID_Alumno + "', '"
 					+ lista_alumnos + "');";
-
+			
 			try {
 				PreparedStatement ps = conexion.prepareStatement(query);
 				ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}
 			}
 
 		}
